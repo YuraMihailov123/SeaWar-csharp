@@ -63,25 +63,27 @@ namespace SeaWars
             {
                 for (int i = 0; i < cycleValue / 4; i++)
                 {
-                    posX = r.Next(0, Form1.mapSize);
-                    posY = r.Next(0, Form1.mapSize);
+                    posX = r.Next(1, Form1.mapSize);
+                    posY = r.Next(1, Form1.mapSize);
 
                     while (!IsInsideMap(posX, posY + lengthShip - 1) || !IsEmpty(posX,posY,lengthShip))
                     {
-                        posX = r.Next(0, Form1.mapSize);
-                        posY = r.Next(0, Form1.mapSize);
+                        posX = r.Next(1, Form1.mapSize);
+                        posY = r.Next(1, Form1.mapSize);
                     }
                     for(int k = posY; k < posY + lengthShip; k++)
                     {
-                        myMap[posX, posY] = 1;
+                        myMap[posX, k] = 1;
                     }
                     
-                    lengthShip--;
-                    cycleValue *= 2;
+                    
+                    
                     shipsCount--;
                     if (shipsCount <= 0)
                         break;
                 }
+                cycleValue += 4;
+                lengthShip--;
             }
             return myMap;
         }

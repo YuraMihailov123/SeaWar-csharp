@@ -118,6 +118,17 @@ namespace SeaWars
         public void Start(object sender, EventArgs e)
         {
             isPlaying = true;
+
+            for(int i = 0; i < mapSize; i++)
+            {
+                for (int j = 0; j < mapSize; j++)
+                {
+                    if(enemyMap[i,j] != 0)
+                    {
+                        enemyButtons[i, j].BackColor = Color.Blue;
+                    }
+                }
+            }
         }
 
         public bool CheckIfMapIsNotEmpty()
